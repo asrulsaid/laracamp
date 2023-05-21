@@ -65,6 +65,8 @@ class CheckoutController extends Controller
         // create checkout
         $checkout =Checkout::create($data);
 
+        $this->getSnapRedirect($checkout);
+
         // sending email
         Mail::to(Auth::user()->email)->send(new AfterCheckout($checkout));
 
@@ -125,4 +127,9 @@ class CheckoutController extends Controller
     // {
     //     return $checkout;
     // }
+
+    public function getSnapRedirect(Checkout $checkout)
+    {
+        # code...
+    }
 }
